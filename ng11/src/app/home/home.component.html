@@ -1,0 +1,15 @@
+<main class="home">
+    <div class="todos"  >
+        <app-todo (removeTodoEvent)="removeTodo($event)" *ngFor="let todo of todos" [todo]="todo"></app-todo>
+    </div>
+
+    <aside class="controller">
+        <h1>New todo</h1>
+
+        <input [value]="newTitle" (input)="newTitle = $event.target.value" type="text" placeholder="Title">
+        <textarea [value]="newDesc" (input)="newDesc = $event.target.value" name="text" id="" cols="30" rows="10" placeholder="Text"></textarea>
+
+        <button (click)="newTodo()">Create!</button>
+        <button (click)="clearFields()">Clear fields</button>
+    </aside>
+</main>

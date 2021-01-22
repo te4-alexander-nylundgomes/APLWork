@@ -47,6 +47,14 @@ public class Main {
             }
         }else if(answer.toLowerCase().equals("w")){
             boolean won = hasWon(playingField);
+            if(won){
+                System.out.println("My god! You beat me in my own game!");
+                System.out.println("Well then, congratulations!");
+                exit(0);
+            }else{
+                System.out.println("Trying to cheat the system are we? We'll then, no more playing for you!");
+                exit(0);
+            }
         }
 
         return playingField;
@@ -64,22 +72,26 @@ public class Main {
             }
 
             if(counter == row.length){
+                System.out.println("Found a row!");
                 return true;
             }
         }
 
         //Check all columns
-        for(Coordinate[] row: playingField){
-            int counter = 0;
-            int column_value = row[0].value;
-            for(int position = 1; position< playingField.length; position++){
-                if(row[position].value == column_value){
-                    counter ++;
-                }
-            }
 
-            if(counter == playingField.length){
-                return true;
+
+        for(int i=0; i<playingField.length; i++){
+            int counter = 0;
+            for(Coordinate[] row: playingField){
+                if(row[i].found){
+                    counter++;
+                }
+
+
+                if(counter == playingField.length){
+                    System.out.println("Found a column!");
+                    return true;
+                }
             }
         }
 
@@ -169,5 +181,6 @@ public class Main {
 
         toMatrix(playingField);
         System.out.println("The whole playing field is crossed out!? Do you even know how to play bingo?");
+
     }
 }

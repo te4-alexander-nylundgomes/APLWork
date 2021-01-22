@@ -1,0 +1,12 @@
+<div class="card" [class.isDone]="todo.isDone">
+    <h1 class="title">Todo</h1>
+    <h3>{{ todo.title }}</h3>
+    <p>{{ todo.desc }}</p>
+
+    <div class="buttons">
+        <button *ngIf="!todo.isDone" (click)="changeState()" [class.isClicked]="isClicked">Finish</button>
+        <button *ngIf="todo.isDone" (click)="changeState()" [class.isClicked]="isClicked">Reopen</button>
+    
+        <button class="remove" (click)="removeTodo()">Remove</button>
+    </div>
+</div>
